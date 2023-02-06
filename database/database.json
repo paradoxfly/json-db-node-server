@@ -1,7 +1,8 @@
-{
-  "1": [
-    [
-      "okay"
-    ]
-  ]
-}
+{"address":157550315,"title":"Microsoft Edge","description":" campaign deployed from edge broswer","expected":"3","img":"","progress":0,"deployer":"TKRZSACFDZFHSZTSI2KNWEDJ3UTUVHJHN74LECHSW24OO5SAXFPXOLMWE4","donors":[],"id":"gGPldve4","_id":"nvrhTCWCCNZpz6ce"}
+{"address":157550333,"title":"Google chrome","description":"campaign deployed from google chrome broswer","expected":"3","img":"","progress":0,"deployer":"EMWOKLOFSX43WUP3U72TVWVIU33IPAGYP4P47QNTV3JQL3PLIUGXML7H4Q","donors":[],"id":"WtGZTOap","_id":"R9zJVMbrSqFYLqp5"}
+{"address":157550336,"title":"Firefox browser","description":"campaign deployed from edge broswer","expected":"3","img":"","progress":0,"deployer":"P64GLNJSW2ULOO5CLHKFBU5LQJWJMQHEVDRJHZ4BW5WT5WGUNGAC6ABNXA","donors":[],"id":"jG9k9c5t","_id":"hcyZkih84pvY6xlO"}
+{"address":157550315,"title":"Microsoft Edge","description":" campaign deployed from edge broswer","expected":3,"img":"","progress":1,"deployer":"TKRZSACFDZFHSZTSI2KNWEDJ3UTUVHJHN74LECHSW24OO5SAXFPXOLMWE4","donors":[{"address":"P64GLNJSW2ULOO5CLHKFBU5LQJWJMQHEVDRJHZ4BW5WT5WGUNGAC6ABNXA","donation":"1"}],"id":"gGPldve4","_id":"nvrhTCWCCNZpz6ce"}
+{"address":157550315,"title":"Microsoft Edge","description":" campaign deployed from edge broswer","expected":3,"img":"","progress":1,"deployer":"TKRZSACFDZFHSZTSI2KNWEDJ3UTUVHJHN74LECHSW24OO5SAXFPXOLMWE4","donors":[{"address":"EMWOKLOFSX43WUP3U72TVWVIU33IPAGYP4P47QNTV3JQL3PLIUGXML7H4Q","donation":"1"}],"id":"gGPldve4","_id":"nvrhTCWCCNZpz6ce"}
+{"address":157550333,"title":"Google chrome","description":"campaign deployed from google chrome broswer","expected":3,"img":"","progress":1,"deployer":"EMWOKLOFSX43WUP3U72TVWVIU33IPAGYP4P47QNTV3JQL3PLIUGXML7H4Q","donors":[{"address":"P64GLNJSW2ULOO5CLHKFBU5LQJWJMQHEVDRJHZ4BW5WT5WGUNGAC6ABNXA","donation":"1"}],"id":"WtGZTOap","_id":"R9zJVMbrSqFYLqp5"}
+{"address":157550333,"title":"Google chrome","description":"campaign deployed from google chrome broswer","expected":3,"img":"","progress":2,"deployer":"EMWOKLOFSX43WUP3U72TVWVIU33IPAGYP4P47QNTV3JQL3PLIUGXML7H4Q","donors":[{"address":"P64GLNJSW2ULOO5CLHKFBU5LQJWJMQHEVDRJHZ4BW5WT5WGUNGAC6ABNXA","donation":"1"},{"address":"TKRZSACFDZFHSZTSI2KNWEDJ3UTUVHJHN74LECHSW24OO5SAXFPXOLMWE4","donation":"1"}],"id":"WtGZTOap","_id":"R9zJVMbrSqFYLqp5"}
+{"address":157550333,"title":"Google chrome","description":"campaign deployed from google chrome broswer","expected":3,"img":"","progress":3,"deployer":"EMWOKLOFSX43WUP3U72TVWVIU33IPAGYP4P47QNTV3JQL3PLIUGXML7H4Q","donors":[{"address":"P64GLNJSW2ULOO5CLHKFBU5LQJWJMQHEVDRJHZ4BW5WT5WGUNGAC6ABNXA","donation":"1"},{"address":"TKRZSACFDZFHSZTSI2KNWEDJ3UTUVHJHN74LECHSW24OO5SAXFPXOLMWE4","donation":"1"},{"address":"TKRZSACFDZFHSZTSI2KNWEDJ3UTUVHJHN74LECHSW24OO5SAXFPXOLMWE4","donation":"1"}],"id":"WtGZTOap","_id":"R9zJVMbrSqFYLqp5"}

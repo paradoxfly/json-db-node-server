@@ -1,63 +1,108 @@
-const { Database } = require('sileco.db');
+const Datastore = require('nedb');
 
-const db = new Database('./database/database.json')
+const db = new Datastore({ filename: './database/database.json', autoload: true})
 
-//db = { user: contractAddress[]]}
-
+// data = {
+//     title: "Crowd funding project",
+//     description: "This is a web 3.0 project aimed at building a scalable crowd funding dapp",
+//     expected: 1800,
+//     img: "/start-campaign-4.jpg",
+//     progress: 0,
+//     donorCount: 0,
+//     address: '',
+//     deployer: '',
+//     donors: [
+//        { address: '', donation: '' }
+//     ]
+// }
 
 /**
  * 
- * @param {*} userAddress 
- * @param {*} contractAddress
+ * @param { { title: string, description: string, expected: string, img: string, progress: string, donorCount: string, address: string, deployer: string }} data
  */
-const addCampaign = (userAddress, contractAddress) => {
-    try {
-        db.push(userAddress, contractAddress)
-        return { success: 'success'}
-    } catch (error) {
-        return { error }
-    }
+const addCampaign = (data) => {
+    return new Promise(resolve => {
+        db.insert(data, (err, newDoc) => {
+            if(err){
+                console.log(error)
+                resolve({ error: err})
+            }
+            else {
+                resolve(newDoc)
+            }
+        })
+    })
 }
 
 /**
  * 
- * @param {*} userAddress 
- * @param {*} contractAddress
+ * @param { { title: string, description: string, expected: string, img: string, progress: string, donorCount: string, address: string, deployer: string }} data
  */
-const removeCampaign = (userAddress, contractAddress) => {
-    try {
-        db.pop(userAddress, contractAddress)
-        return { success: 'success'}
-    } catch (error) {
-        return { error }
-    }
+const editCampaign = (data) => {
+    return new Promise(resolve => {
+        db.update({ address: data.address}, data, (err, newDoc) => {
+            if(err){
+                console.log(error)
+                resolve({ error: err})
+            }
+            else {
+                resolve(newDoc)
+            }
+        })
+    })
 }
 
 /**
  * 
- * @param {*} userAddress 
+ * @param {string} contractAddress
  */
-const fetchUser = (userAddress) => {
-    try {
-        const data = db.fetch(userAddress)
-        return data
-    } catch (error) {
-        return { error }
-    }
+const removeCampaign = (contractAddress) => {
+    return new Promise((resolve) => {
+        db.remove({ "address": contractAddress}, (err, numRemoved) => {
+            if(err){
+                console.log(err)
+                resolve({ error: err})
+            } else {
+                resolve(numRemoved)
+            }
+        });
+    })
 }
 
-const fetchAll = () => {
-    try {
-        const data = db.fetchAllData()
-        return data
-    } catch (error) {
-        return { error }
-    }
+/**
+ * 
+ * @param {string} userAddress 
+ */
+const fetchUserCampaigns = (userAddress) => {
+    return new Promise((resolve) => {
+        db.find({ "deployer": userAddress}, (err, docs) => {
+            if(err){
+                console.log(err)
+                resolve({ error: err})
+            } else {
+                resolve(docs)
+            }
+        });
+    })
+}
+
+const fetchAllData = () => {
+    return new Promise((resolve) => {
+        data = db.find({}, (err, docs) => {
+            if(err){
+                console.log(err)
+                resolve({ error: err})
+            } else {
+                resolve(docs)
+            }
+        });
+    })
 }
 
 module.exports =  {
     addCampaign,
     removeCampaign,
-    fetchUser,
-    fetchAllData
+    fetchUserCampaigns,
+    fetchAllData,
+    editCampaign
 }

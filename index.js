@@ -9,7 +9,7 @@ var app = express();
 const path = require('path');
 const { response } = require('express');
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.PORT || '8080');
 app.set('port', port);
 app.use(cors())
 
@@ -51,50 +51,75 @@ function normalizePort(val) {
 app.use(express.json({limit: "1mb"}));
 app.use(express.urlencoded({ extended: false }));
 
-app.post('/create', (request, response) => {
-    // {userAddress, contractAddress}
-    const data = dbActions.addCampaign(request.body.userAddress, request.body.contractAddress)
+// dbActions.addCampaign({
+//     title: "Crowd funding project",
+//     description: "This is a web 3.0 project aimed at building a scalable crowd funding dapp",
+//     expected: 1800,
+//     img: "/start-campaign-4.jpg",
+//     progress: 0,
+//     address: 'kulikuli',
+//     deployer: 'karago'
+// })
+
+
+app.post('/create', async (request, response) => {
+    // { title: string, description: string, expected: string, img: string, progress: string, donorCount: string, address: string, deployer: string }
+    const data = await dbActions.addCampaign(request.body)
     
     if(data.error){
-        response.json({ status: 'success'})
+        response.json({ error: data.error.message})
     }
     else {
-        response.json({ error: data.error.message })
+        response.json({ status: 'successful', id: data._id })
     }
 })
 
-app.delete('/delete-campaign', (request, response) => {
-    // {userAddress, contractAddress}
-    const data = dbActions.removeCampaign(request.body.userAddress, request.body.contractAddress)
+app.put('/edit', async (request, response) => {
+    // { title: string, description: string, expected: string, img: string, progress: string, donorCount: string, address: string, deployer: string }
+    const data = await dbActions.editCampaign(request.body)
     
     if(data.error){
-        response.json({ status: 'success'})
+        response.json({ error: data.error.message})
     }
     else {
-        response.json({ error: data.error.message })
+        response.json({ status: 'successful'})
     }
 })
 
-app.get('/fetch-all', (request, response) => {
-    const data = dbActions.fetchAllData()
-
+app.delete('/delete-campaign', async (request, response) => {
+    // {contractAddress}
+    const data = await dbActions.removeCampaign(request.body.contractAddress)
+    
     if(data.error){
-        response.json({ status: 'success'})
+        response.json({ error: data.error.message})
     }
     else {
-        response.json({ error: data.error.message })
+        response.json({ status: 'successful' })
     }
 })
 
-app.get('/fetch-user', (request, response) => {
+app.get('/fetch-all', async (request, response) => {
+    const data = await dbActions.fetchAllData()
+    console.log(data)
+
+    if(data?.error){
+        response.json({ error: data.error.message})
+    }
+    else {
+        // console.log(data)
+        response.json(data)
+    }
+})
+
+app.post('/fetch-user-campaigns', async (request, response) => {
     //{ userAddress }
-    const data = dbActions.fetchUser(response.body.userAddress)
+    const data = await dbActions.fetchUserCampaigns(request.body.userAddress)
 
     if(data.error){
-        response.json({ status: 'success'})
+        response.json({ error: data.error.message})
     }
     else {
-        response.json({ error: data.error.message })
+        response.json(data)
     }    
 })
 
